@@ -30,10 +30,10 @@ export default {
   },
   created() {
     //  在页面刷新之前把 store中的数据存在sessionStorage中  刷新完成之后把存到值取出来  再次进行存储
-    this.$store.commit("setUserInfo", JSON.parse(this.$Md5s.decode(sessionStorage['userInfo'])));
-    window.addEventListener("beforeunload", () => {
-      sessionStorage['userInfo']=this.$Md5s.encode(JSON.stringify(this.$store.state))
-    });
+    // this.$store.commit("setUserInfo", JSON.parse(this.$Md5s.decode(sessionStorage['userInfo'])));
+    // window.addEventListener("beforeunload", () => {
+    //   sessionStorage['userInfo']=this.$Md5s.encode(JSON.stringify(this.$store.state))
+    // });
   }
 };
 </script>

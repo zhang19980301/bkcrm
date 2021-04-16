@@ -7,7 +7,14 @@
 <script>
 export default {
   name: "App",
-  components: {}
+  components: {},
+  created() {
+    this.$store.commit("setUserInfo", JSON.parse(this.$Md5s.decode(sessionStorage['userInfo'])));
+    window.addEventListener("beforeunload", () => {
+      sessionStorage['userInfo']=this.$Md5s.encode(JSON.stringify(this.$store.state))
+    });
+    delete sessionStorage["userInfo"]
+  },
 };
 </script>
 
