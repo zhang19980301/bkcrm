@@ -27,7 +27,9 @@
             </template>
           </el-input>
         </li>
-        <li><el-button type="danger" @click="login">登录</el-button></li>
+        <li>
+          <el-button type="danger" @click="login">登录</el-button>
+        </li>
       </ul>
     </div>
   </div>
@@ -51,7 +53,11 @@ export default {
   methods: {
     recode() {
       this.date = +new Date();
-      this.ysrc = `https://192.168.0.9:4010/imgCode?date=${this.date}`;
+      if (process.env.NODE_ENV == "development") {
+        this.ysrc = `https://2.0.0.31:4010/imgCode?date=${this.date}`;
+      } else if (process.env.NODE_ENV == "production") {
+        this.ysrc = `https://suqi.ltd:4010/imgCode?date=${this.date}`;
+      }
     },
     login() {
       if (this.username == "") {
@@ -81,10 +87,14 @@ export default {
         };
         this.$HTTP({
           url: "/login",
-          data: { s: this.$Md5s.encode(JSON.stringify(s)) }
+          data: {
+            s: this.$Md5s.encode(JSON.stringify(s))
+          }
         })
           .then(res => {
-            sessionStorage['userInfo']=this.$Md5s.encode(JSON.stringify(res.data.obj))
+            sessionStorage["userInfo"] = this.$Md5s.encode(
+              JSON.stringify(res.data.obj)
+            );
             this.$store.commit("setUserInfo", res.data.obj);
             this.$router.push("/");
           })
@@ -113,6 +123,7 @@ export default {
   bottom: 0;
   z-index: -999;
 }
+
 .login_backg + div {
   width: 500px;
   height: 500px;
@@ -125,21 +136,26 @@ export default {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
+
 .login_backg + div ul li:first-child {
   font-size: 23px;
   font-weight: 700;
 }
+
 .login_backg + div ul li {
   text-align: center;
   margin-top: 50px;
 }
+
 .login_backg + div ul li .el-input {
   width: 80%;
   margin: 0 auto;
 }
+
 .el-button {
   width: 80%;
 }
+
 img {
   margin-top: 5px;
 }

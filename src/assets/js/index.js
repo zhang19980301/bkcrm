@@ -1,5 +1,9 @@
 import axios from "axios"
-axios.defaults.baseURL = "https://192.168.0.9:4010"
+if (process.env.NODE_ENV == "development") {
+    axios.defaults.baseURL = "https://2.0.0.31:4010"
+} else if (process.env.NODE_ENV == "production") {
+    axios.defaults.baseURL = "https://suqi.ltd:4010"
+}
 
 // axios.interceptors.request.use(
 //     config => {
