@@ -32,12 +32,17 @@
         </li>
       </ul>
     </div>
+    <Music />
   </div>
 </template>
 
 <script>
+import Music from "./music/index";
 export default {
   name: "login",
+  components: {
+    Music
+  },
   data() {
     return {
       username: "",
@@ -54,7 +59,7 @@ export default {
     recode() {
       this.date = +new Date();
       if (process.env.NODE_ENV == "development") {
-        this.ysrc = `https://2.0.0.31:4010/imgCode?date=${this.date}`;
+        this.ysrc = `https://192.168.11.43:4010/imgCode?date=${this.date}`;
       } else if (process.env.NODE_ENV == "production") {
         this.ysrc = `https://suqi.ltd:4010/imgCode?date=${this.date}`;
       }

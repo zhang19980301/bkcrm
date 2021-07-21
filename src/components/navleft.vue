@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- isActive, isExactActive -->
-      <router-link to="/about/login" custom v-slot="{ href, route, navigate,  }">
+      <router-link to="/user/meange" custom v-slot="{ href, route, navigate,  }">
         <li :href="href" @click="navigate">{{route.name}}</li>
       </router-link>
       <router-link to="/about/login2" custom v-slot="{ href, route, navigate,  }">

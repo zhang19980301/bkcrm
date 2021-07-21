@@ -1,6 +1,6 @@
 import axios from "axios"
 if (process.env.NODE_ENV == "development") {
-    axios.defaults.baseURL = "https://2.0.0.31:4010"
+    axios.defaults.baseURL = "https://192.168.11.43:4010"
 } else if (process.env.NODE_ENV == "production") {
     axios.defaults.baseURL = "https://suqi.ltd:4010"
 }

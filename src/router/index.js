@@ -13,9 +13,25 @@ const routes = [{
         component: Home,
         children: [{
             path: '/about/login',
-            name: '登录1',
+            name: '用户管理',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ '@/views/userMeange/userMeange.vue')
+        }, {
+            path: '/about/login2',
+            name: '登录2',
             component: () =>
                 import ( /* webpackChunkName: "about" */ '@/components/login')
+        }]
+    },
+    {
+        path: '/user',
+        name: 'User',
+        component: Home,
+        children: [{
+            path: '/user/meange',
+            name: '用户管理',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ '@/views/userMeange/userMeange.vue')
         }, {
             path: '/about/login2',
             name: '登录2',
