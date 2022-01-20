@@ -21,11 +21,26 @@ export default {
     }).then(res => {
       res.data.data.forEach(item => {
         if(process.env.NODE_ENV === "development"){
-          item.cover = `https://192.168.11.43:4010/getMusicImg?name=${item.name}`;
-          item.url = `https://192.168.11.43:4010/music/${item.name}`;
+          // item.cover = `https://127.0.0.1:4010/getMusicImg?name=${item.title}`;
+          var bytes = new Uint8Array(item.picture);
+          var storeData = "";
+          var len = bytes.byteLength;
+          for (var i = 0; i < len; i++) {
+              storeData += String.fromCharCode(bytes[i]);
+          }
+          var code='data:image/png;base64,'+ window.btoa(storeData);
+          item.cover = code
+          item.url = `https://127.0.0.1:4010/music/${item.title}`;
         }else{
-          item.cover = `https://suqi.ltd:4010/getMusicImg?name=${item.name}`;
-          item.url = `https://suqi.ltd:4010/music/${item.name}`;
+          var bytes = new Uint8Array(item.picture);
+          var storeData = "";
+          var len = bytes.byteLength;
+          for (var i = 0; i < len; i++) {
+              storeData += String.fromCharCode(bytes[i]);
+          }
+          var code='data:image/png;base64,'+ window.btoa(storeData);
+          item.cover = code
+          item.url = `https://zzzsuqi.cn:4010/music/${item.name}`;
         }
       });
       console.log(res);
