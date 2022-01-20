@@ -22,23 +22,23 @@ export default {
       res.data.data.forEach(item => {
         if(process.env.NODE_ENV === "development"){
           // item.cover = `https://127.0.0.1:4010/getMusicImg?name=${item.title}`;
-          var bytes = new Uint8Array(item.picture);
-          var storeData = "";
-          var len = bytes.byteLength;
-          for (var i = 0; i < len; i++) {
+          let bytes = new Uint8Array(item.picture);
+          let storeData = "";
+          let len = bytes.byteLength;
+          for (let i = 0; i < len; i++) {
               storeData += String.fromCharCode(bytes[i]);
           }
-          var code='data:image/png;base64,'+ window.btoa(storeData);
+          let code='data:image/png;base64,'+ window.btoa(storeData);
           item.cover = code
           item.url = `https://127.0.0.1:4010/music/${item.title}`;
         }else{
-          var bytes = new Uint8Array(item.picture);
-          var storeData = "";
-          var len = bytes.byteLength;
-          for (var i = 0; i < len; i++) {
+          let bytes = new Uint8Array(item.picture);
+          let storeData = "";
+          let len = bytes.byteLength;
+          for (let i = 0; i < len; i++) {
               storeData += String.fromCharCode(bytes[i]);
           }
-          var code='data:image/png;base64,'+ window.btoa(storeData);
+          let code='data:image/png;base64,'+ window.btoa(storeData);
           item.cover = code
           item.url = `https://zzzsuqi.cn:4010/music/${item.name}`;
         }
