@@ -59,7 +59,7 @@ export default {
     recode() {
       this.date = +new Date();
       if (process.env.NODE_ENV == "development") {
-        this.ysrc = `https://192.168.11.43:4010/imgCode?date=${this.date}`;
+        this.ysrc = `https://127.0.0.1:4010/imgCode?date=${this.date}`;
       } else if (process.env.NODE_ENV == "production") {
         this.ysrc = `https://suqi.ltd:4010/imgCode?date=${this.date}`;
       }
@@ -98,15 +98,14 @@ export default {
         })
           .then(res => {
             sessionStorage["userInfo"] = this.$Md5s.encode(
-              JSON.stringify(res.data.obj)
+              JSON.stringify(res.obj)
             );
-            this.$store.commit("setUserInfo", res.data.obj);
+            this.$store.commit("setUserInfo", res.obj);
             this.$router.push("/");
           })
           .catch(err => {
-            console.log(err);
             this.$message({
-              message: err.data.message,
+              message: err.message,
               type: "error",
               center: true
             });

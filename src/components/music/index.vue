@@ -19,7 +19,7 @@ export default {
     this.$HTTP({
       url: "/getAllMusic"
     }).then(res => {
-      res.data.data.forEach(item => {
+      res.data.forEach(item => {
         if(process.env.NODE_ENV === "development"){
           // item.cover = `https://127.0.0.1:4010/getMusicImg?name=${item.title}`;
           let bytes = new Uint8Array(item.picture);
@@ -43,8 +43,7 @@ export default {
           item.url = `https://zzzsuqi.cn:4010/music/${item.name}`;
         }
       });
-      console.log(res);
-      this.songLists = [...res.data.data];
+      this.songLists = [...res.data];
     });
   },
   methods: {

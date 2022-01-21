@@ -43,7 +43,11 @@ export default {
     };
   },
   methods: {},
-  created() {}
+  async created() {
+    let obj = await this.$HTTP({ url: "/getAllUsers", data: {pagelist: 10, pageNo: 1} })
+    console.log(obj)
+    // this.$
+  }
 };
 </script>
 

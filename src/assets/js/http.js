@@ -19,7 +19,7 @@ class Http {
             HTTPS = axios.get(httpurl + url, { params: data })
         }
         HTTPS.then((res) => {
-            if (res.data.code !== 200) {
+            if (res.code !== 200) {
                 faild(res)
             } else {
                 success(res)
