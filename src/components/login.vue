@@ -61,7 +61,7 @@ export default {
       if (process.env.NODE_ENV == "development") {
         this.ysrc = `https://127.0.0.1:4010/imgCode?date=${this.date}`;
       } else if (process.env.NODE_ENV == "production") {
-        this.ysrc = `https://suqi.ltd:4010/imgCode?date=${this.date}`;
+        this.ysrc = `https://zzzsuqi.cn:4010/imgCode?date=${this.date}`;
       }
     },
     login() {

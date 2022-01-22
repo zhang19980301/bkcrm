@@ -1,19 +1,20 @@
 import axios from "axios"
 import router from '../../router/index'
+import store from "../../store"
 if (process.env.NODE_ENV == "development") {
     axios.defaults.baseURL = "https://127.0.0.1:4010"
 } else if (process.env.NODE_ENV == "production") {
     axios.defaults.baseURL = "https://zzzsuqi.cn:4010"
 }
 
-// axios.interceptors.request.use(
-//     config => {
-//         // if (sessionStorage.length != 0) {
-//         //     config.headers.token = `${sessionStorage['token']}`
-//         // }
-//         // return config
-//     }
-// )
+axios.interceptors.request.use(
+    config => {
+        if (store.state.token) {
+            config.headers.token = `${store.state.token}`
+        }
+        return config
+    }
+)
 
 // 响应拦截
 axios.interceptors.response.use(
