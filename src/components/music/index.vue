@@ -30,7 +30,7 @@ export default {
           }
           let code='data:image/png;base64,'+ window.btoa(storeData);
           item.cover = code
-          item.url = `https://127.0.0.1:4010/music/${item.title}`;
+          item.url = `https://127.0.0.1:4010/public/music/${item.title}`;
         }else{
           let bytes = new Uint8Array(item.picture);
           let storeData = "";
@@ -40,7 +40,7 @@ export default {
           }
           let code='data:image/png;base64,'+ window.btoa(storeData);
           item.cover = code
-          item.url = `https://zzzsuqi.cn:4010/music/${item.name}`;
+          item.url = `https://zzzsuqi.cn:4010/public/music/${item.name}`;
         }
       });
       this.songLists = [...res.data];
