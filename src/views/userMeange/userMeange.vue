@@ -47,7 +47,7 @@
             <el-input autocomplete="off" clearable v-model="person.eimal"></el-input>
           </el-form-item>
           <el-form-item label="邮箱验证码">
-            <el-input autocomplete="off" clearable v-model="person.eimalyan">
+            <el-input autocomplete="off" v-model="person.eimalyan">
               <template #suffix>
                 <div class="cu" @click="sendEmail">{{text}}</div>
               </template>
@@ -132,7 +132,12 @@ export default {
      * 发送邮箱验证码
      */
     sendEmail(){
-      this.test = '60s后重新发送验证码'
+      console.log(this.person.eimal)
+      if(!this.person.eimal){
+        this.$message.error('邮箱不能为空')
+        return
+      }
+      this.text = '60s后重新发送验证码'
     },
     guanbi(){
       // console.log(e)
